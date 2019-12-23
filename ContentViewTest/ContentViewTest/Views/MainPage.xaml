@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Cont="clr-namespace:ContentViewTest.Views"
+             xmlns:ViewModels="clr-namespace:ContentViewTest.ViewModels"
+             x:Class="ContentViewTest.Views.MainPage">
+
+
+
+    <StackLayout>
+
+        <!-- MyControlのViewModelと接続されているので親から操作不能 -->
+        <Cont:MyControl BackgroundColor="{Binding BackColor.Value}"/>
+        
+        <!-- こっちは当然親のViewModelから変更できる -->
+        <Label Text="見本" BackgroundColor="{Binding BackColor.Value}"/>
+
+        <Button Text="押すとBackColor.Value=Pink" Command="{Binding Command}"/>
+        
+    </StackLayout>
+    
+</ContentPage>
