@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Cont="clr-namespace:ContentViewTest.Views"
              xmlns:ViewModels="clr-namespace:ContentViewTest.ViewModels"
-             x:Class="ContentViewTest.Views.MainPage">
-
-
+             x:Class="ContentViewTest.Views.MainPage"
+             x:Name="self">
 
     <StackLayout>
 
         <!-- MyControlのViewModelと接続されているので親から操作不能 -->
         <Cont:MyControl BackgroundColor="{Binding BackColor.Value}"/>
+
+        <!-- 明示的に親のViewModelを指定すると操作可能となる -->
+        <Cont:MyControl BackgroundColor="{Binding BindingContext.BackColor.Value ,Source={x:Reference self}}"/>
         
         <!-- こっちは当然親のViewModelから変更できる -->
         <Label Text="見本" BackgroundColor="{Binding BackColor.Value}"/>
