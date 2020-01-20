@@ -8,17 +8,18 @@
 
     <StackLayout>
 
-        <!-- MyControlのViewModelと接続されているので親から操作不能 子から操作される-->
+        <!--MyControlのViewModelと接続されているので親から操作不能 子から操作される-->
         <Cont:MyControl BackgroundColor="{Binding BackColor.Value}"/>
 
-        <!-- 明示的にViewを指定するとそれと繋がるViewModelからの操作可能となる -->
+        <!--明示的にViewを指定するとそれと繋がるViewModelからの操作可能となる-->
         <Cont:MyControl BackgroundColor="{Binding BindingContext.BackColor.Value ,Source={x:Reference self}}"/>
-        
-        <!-- こっちは当然親のViewModelから変更できる -->
-        <Label Text="見本" BackgroundColor="{Binding BackColor.Value}"/>
 
-        <Button Text="押すとBackColor.Value=Pink" Command="{Binding Command}"/>
-        
+        <!-- こっちは当然親のViewModelから変更できる -->
+        <StackLayout BackgroundColor="{Binding BackColor.Value}">
+            <Label Text="親見本" />
+            <Button Text="親から押す" Command="{Binding Command}"/>
+        </StackLayout>
     </StackLayout>
-    
+
+
 </ContentPage>

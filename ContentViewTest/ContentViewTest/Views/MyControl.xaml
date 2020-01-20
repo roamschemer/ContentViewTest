@@ -8,7 +8,7 @@
 
     <StackLayout>
         <Label Text="子"/>
-        <Button Text="押すとBackColor.Value=Yellow" Command="{Binding Command}"/>
+        <Button Text="子から押す" Command="{Binding Command}"/>
     </StackLayout>
 
 </ContentView>
